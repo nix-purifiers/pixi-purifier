@@ -1,0 +1,10 @@
+{
+  "contentHash": "a80b1da6a19778fd9def33dc8ff07e8383fd76489d58034f88dd80f7a1a7a65a",
+  "hashes": {},
+  "inputs": {
+    "manifest": "e708813a5791587aab693cbed9aad0195d02ebdd4ab7877354af438b83a3ab2a",
+    "native": "a9659473bfc7d8f1450ee5e7d1619765424e52277e0c6dec5231c5681eb1f6d2"
+  },
+  "pixiVersion": "0.82.1",
+  "version": 1
+}

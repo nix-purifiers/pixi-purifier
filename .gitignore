@@ -1,0 +1,5 @@
+result*
+.pixi-purifier/
+.pixi/
+__pycache__/
+*.pyc
