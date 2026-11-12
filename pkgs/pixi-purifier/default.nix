@@ -16,12 +16,12 @@
 stdenvNoCC.mkDerivation {
   pname = "pixi-purifier";
   version = "0.1.0";
-  src = ../.;
+  src = ../..;
   nativeBuildInputs = [ makeWrapper ];
   dontBuild = true;
   installPhase = ''
     mkdir -p "$out/bin" "$out/lib/pixi-purifier"
-    cp -r pixi_purifier nix "$out/lib/pixi-purifier/"
+    cp -r pixi_purifier nix lib-overlays pkgs "$out/lib/pixi-purifier/"
     install -m755 bin/pixi-purifier "$out/bin/pixi-purifier"
     substituteInPlace "$out/lib/pixi-purifier/nix/realize.nix" \
       --replace-fail '@nixpkgs@' '${nixpkgsSrc}' \

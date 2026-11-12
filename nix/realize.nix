@@ -15,7 +15,7 @@ let
     pixiLock = /. + pixiLock;
     manifestFile = /. + manifestFile;
   };
-  result = pkgs.callPackage ./build-project.nix { inherit purifier; } args;
+  result = pkgs.callPackage ../pkgs/build-pixi-project/default.nix { inherit purifier; } args;
 in
 if target == "workspace" then
   result.workspace

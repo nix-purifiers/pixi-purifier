@@ -72,7 +72,7 @@ runCommand "purified-pixi-environments"
     cp ${manifestFile} "$out/workspace/${baseNameOf manifestFile}"
     cp ${pixiLock} "$out/workspace/pixi.lock"
     chmod u+w "$out/workspace/pixi.lock" "$out/workspace/${baseNameOf manifestFile}"
-    python ${../pixi_purifier/materialize.py} "$out/workspace/pixi.lock" ${archives} ${entriesFile} "$out/workspace/${baseNameOf manifestFile}"
+    python ${../../pixi_purifier/materialize.py} "$out/workspace/pixi.lock" ${archives} ${entriesFile} "$out/workspace/${baseNameOf manifestFile}"
     pixi install --frozen --offline --all --manifest-path "$out/workspace/${baseNameOf manifestFile}"
     for environment in "$out/workspace/.pixi/envs/"*; do
       PATH="$environment/bin:$PATH" patchShebangs "$environment/bin"
