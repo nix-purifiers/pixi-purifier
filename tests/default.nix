@@ -22,7 +22,7 @@ let
     pixiLock = fixture + "/pixi.lock";
   };
   parsed = pkgs.writeText "pixi-native-parsed.json" (
-    builtins.toJSON (import ../nix/yaml.nix { inherit (pkgs) lib; } (fixture + "/pixi.lock"))
+    builtins.toJSON (import ../lib-overlays/default/yaml.nix { inherit (pkgs) lib; } (fixture + "/pixi.lock"))
   );
   errorCheck =
     case:

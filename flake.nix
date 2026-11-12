@@ -21,11 +21,11 @@
       shared = lib: import (purifier + "/nix/lib") { inherit lib; };
       overlay = final: prev: {
         pixi-purifier = final.lib.makeScope final.newScope (scope: {
-          cli = scope.callPackage ./nix/cli.nix {
+          cli = scope.callPackage ./pkgs/pixi-purifier/default.nix {
             nixpkgsSrc = nixpkgs;
             purifierSrc = purifier;
           };
-          buildPixiProject = scope.callPackage ./nix/build-project.nix { purifier = shared final.lib; };
+          buildPixiProject = scope.callPackage ./pkgs/build-pixi-project/default.nix { purifier = shared final.lib; };
         });
       };
       pkgsFor =
@@ -37,7 +37,7 @@
     in
     {
       overlays.default = overlay;
-      lib.pixi-purifier.readLock = import ./nix/read-lock.nix { lib = nixpkgs.lib; };
+      lib.pixi-purifier = import ./lib-overlays/default { lib = nixpkgs.lib; };
       packages = forAll (system: {
         default = (pkgsFor system).pixi-purifier.cli;
         cli = self.packages.${system}.default;
